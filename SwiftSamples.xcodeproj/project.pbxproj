@@ -6,17 +6,21 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FBF735D12CEF866600937EBD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF735CE2CEF866600937EBD /* ContentView.swift */; };
+		FBF735D22CEF866600937EBD /* SwiftSamplesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF735CF2CEF866600937EBD /* SwiftSamplesApp.swift */; };
+		FBF735D32CEF866600937EBD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF735CB2CEF866600937EBD /* Preview Assets.xcassets */; };
+		FBF735D42CEF866600937EBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF735CD2CEF866600937EBD /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		FBF735BA2CEF865E00937EBD /* SwiftSamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF735CB2CEF866600937EBD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FBF735CD2CEF866600937EBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FBF735CE2CEF866600937EBD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FBF735CF2CEF866600937EBD /* SwiftSamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSamplesApp.swift; sourceTree = "<group>"; };
+		FBF735D52CEF867700937EBD /* SwiftSamples.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftSamples.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		FBF735BC2CEF865E00937EBD /* SwiftSamples */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SwiftSamples;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FBF735B72CEF865E00937EBD /* Frameworks */ = {
@@ -32,7 +36,7 @@
 		FBF735B12CEF865E00937EBD = {
 			isa = PBXGroup;
 			children = (
-				FBF735BC2CEF865E00937EBD /* SwiftSamples */,
+				FBF735D02CEF866600937EBD /* SwiftSamples */,
 				FBF735BB2CEF865E00937EBD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +47,26 @@
 				FBF735BA2CEF865E00937EBD /* SwiftSamples.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FBF735CC2CEF866600937EBD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FBF735CB2CEF866600937EBD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FBF735D02CEF866600937EBD /* SwiftSamples */ = {
+			isa = PBXGroup;
+			children = (
+				FBF735D52CEF867700937EBD /* SwiftSamples.entitlements */,
+				FBF735CF2CEF866600937EBD /* SwiftSamplesApp.swift */,
+				FBF735CE2CEF866600937EBD /* ContentView.swift */,
+				FBF735CD2CEF866600937EBD /* Assets.xcassets */,
+				FBF735CC2CEF866600937EBD /* Preview Content */,
+			);
+			path = SwiftSamples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +83,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				FBF735BC2CEF865E00937EBD /* SwiftSamples */,
 			);
 			name = SwiftSamples;
 			packageProductDependencies = (
@@ -109,6 +130,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBF735D32CEF866600937EBD /* Preview Assets.xcassets in Resources */,
+				FBF735D42CEF866600937EBD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBF735D12CEF866600937EBD /* ContentView.swift in Sources */,
+				FBF735D22CEF866600937EBD /* SwiftSamplesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +274,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwiftSamples/SwiftSamples.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftSamples/Preview Content\"";
@@ -278,6 +304,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwiftSamples/SwiftSamples.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftSamples/Preview Content\"";
