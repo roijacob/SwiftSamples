@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FBF735D12CEF866600937EBD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF735CE2CEF866600937EBD /* ContentView.swift */; };
 		FBF735D22CEF866600937EBD /* SwiftSamplesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF735CF2CEF866600937EBD /* SwiftSamplesApp.swift */; };
 		FBF735D32CEF866600937EBD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF735CB2CEF866600937EBD /* Preview Assets.xcassets */; };
 		FBF735D42CEF866600937EBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF735CD2CEF866600937EBD /* Assets.xcassets */; };
+		FBF735F42CEF8A8600937EBD /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF735F32CEF8A8600937EBD /* FriendsListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FBF735BA2CEF865E00937EBD /* SwiftSamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF735CB2CEF866600937EBD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FBF735CD2CEF866600937EBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FBF735CE2CEF866600937EBD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FBF735CF2CEF866600937EBD /* SwiftSamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSamplesApp.swift; sourceTree = "<group>"; };
 		FBF735D52CEF867700937EBD /* SwiftSamples.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftSamples.entitlements; sourceTree = "<group>"; };
+		FBF735F32CEF8A8600937EBD /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +62,19 @@
 			children = (
 				FBF735D52CEF867700937EBD /* SwiftSamples.entitlements */,
 				FBF735CF2CEF866600937EBD /* SwiftSamplesApp.swift */,
-				FBF735CE2CEF866600937EBD /* ContentView.swift */,
+				FBF735F52CEF8B7200937EBD /* FriendsListApp */,
 				FBF735CD2CEF866600937EBD /* Assets.xcassets */,
 				FBF735CC2CEF866600937EBD /* Preview Content */,
 			);
 			path = SwiftSamples;
+			sourceTree = "<group>";
+		};
+		FBF735F52CEF8B7200937EBD /* FriendsListApp */ = {
+			isa = PBXGroup;
+			children = (
+				FBF735F32CEF8A8600937EBD /* FriendsListView.swift */,
+			);
+			path = FriendsListApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,8 +150,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBF735D12CEF866600937EBD /* ContentView.swift in Sources */,
 				FBF735D22CEF866600937EBD /* SwiftSamplesApp.swift in Sources */,
+				FBF735F42CEF8A8600937EBD /* FriendsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

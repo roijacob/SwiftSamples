@@ -11,7 +11,8 @@ import SwiftUI
 struct SwiftSamplesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FriendsListView()
+                .modelContainer(for: Friends.self)
         }
     }
 }
