@@ -7,13 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB6132E32CF01AA40049CEA2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6132E22CF01AA40049CEA2 /* WidgetKit.framework */; };
+		FB6132E52CF01AA40049CEA2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6132E42CF01AA40049CEA2 /* SwiftUI.framework */; };
+		FB6132F02CF01AA50049CEA2 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FB6132E02CF01AA40049CEA2 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FB6132F72CF01B1C0049CEA2 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6132F62CF01B1C0049CEA2 /* Todo.swift */; };
+		FB6132FA2CF01CB70049CEA2 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6132F92CF01CB40049CEA2 /* Home.swift */; };
+		FB6132FC2CF01DE80049CEA2 /* TodoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6132FB2CF01DDF0049CEA2 /* TodoRowView.swift */; };
+		FB6132FE2CF01E210049CEA2 /* CompletedTodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6132FD2CF01E160049CEA2 /* CompletedTodoList.swift */; };
+		FB6133002CF01ED20049CEA2 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6132F62CF01B1C0049CEA2 /* Todo.swift */; };
+		FB6133092CF01F680049CEA2 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6133062CF01F680049CEA2 /* ToDoList.swift */; };
+		FB61330A2CF01F680049CEA2 /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6133072CF01F680049CEA2 /* WidgetsBundle.swift */; };
+		FB61330B2CF01F680049CEA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6133042CF01F680049CEA2 /* Assets.xcassets */; };
 		FBF735D22CEF866600937EBD /* SwiftSamplesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF735CF2CEF866600937EBD /* SwiftSamplesApp.swift */; };
 		FBF735D32CEF866600937EBD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF735CB2CEF866600937EBD /* Preview Assets.xcassets */; };
 		FBF735D42CEF866600937EBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF735CD2CEF866600937EBD /* Assets.xcassets */; };
 		FBF735F42CEF8A8600937EBD /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF735F32CEF8A8600937EBD /* FriendsListView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FB6132EE2CF01AA50049CEA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBF735B22CEF865E00937EBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB6132DF2CF01AA40049CEA2;
+			remoteInfo = WidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FB6132F12CF01AA50049CEA2 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FB6132F02CF01AA50049CEA2 /* WidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FB6132E02CF01AA40049CEA2 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB6132E22CF01AA40049CEA2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		FB6132E42CF01AA40049CEA2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		FB6132F62CF01B1C0049CEA2 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		FB6132F92CF01CB40049CEA2 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		FB6132FB2CF01DDF0049CEA2 /* TodoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRowView.swift; sourceTree = "<group>"; };
+		FB6132FD2CF01E160049CEA2 /* CompletedTodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTodoList.swift; sourceTree = "<group>"; };
+		FB6132FF2CF01E5E0049CEA2 /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
+		FB6133042CF01F680049CEA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB6133052CF01F680049CEA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB6133062CF01F680049CEA2 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
+		FB6133072CF01F680049CEA2 /* WidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsBundle.swift; sourceTree = "<group>"; };
 		FBF735BA2CEF865E00937EBD /* SwiftSamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF735CB2CEF866600937EBD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FBF735CD2CEF866600937EBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -23,6 +70,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FB6132DD2CF01AA40049CEA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB6132E52CF01AA40049CEA2 /* SwiftUI.framework in Frameworks */,
+				FB6132E32CF01AA40049CEA2 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FBF735B72CEF865E00937EBD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,10 +89,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB6132E12CF01AA40049CEA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB6132E22CF01AA40049CEA2 /* WidgetKit.framework */,
+				FB6132E42CF01AA40049CEA2 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB6132F82CF01C730049CEA2 /* ToDoListApp */ = {
+			isa = PBXGroup;
+			children = (
+				FB6132FD2CF01E160049CEA2 /* CompletedTodoList.swift */,
+				FB6132FB2CF01DDF0049CEA2 /* TodoRowView.swift */,
+				FB6132F92CF01CB40049CEA2 /* Home.swift */,
+				FB6132F62CF01B1C0049CEA2 /* Todo.swift */,
+			);
+			path = ToDoListApp;
+			sourceTree = "<group>";
+		};
+		FB6133032CF01F680049CEA2 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				FB6133062CF01F680049CEA2 /* ToDoList.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		FB6133082CF01F680049CEA2 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				FB6133052CF01F680049CEA2 /* Info.plist */,
+				FB6133042CF01F680049CEA2 /* Assets.xcassets */,
+				FB6133072CF01F680049CEA2 /* WidgetsBundle.swift */,
+				FB6133032CF01F680049CEA2 /* Apps */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
 		FBF735B12CEF865E00937EBD = {
 			isa = PBXGroup;
 			children = (
+				FB6132FF2CF01E5E0049CEA2 /* WidgetsExtension.entitlements */,
 				FBF735D02CEF866600937EBD /* SwiftSamples */,
+				FB6133082CF01F680049CEA2 /* Widgets */,
+				FB6132E12CF01AA40049CEA2 /* Frameworks */,
 				FBF735BB2CEF865E00937EBD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF735BA2CEF865E00937EBD /* SwiftSamples.app */,
+				FB6132E02CF01AA40049CEA2 /* WidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,10 +159,11 @@
 		FBF735D02CEF866600937EBD /* SwiftSamples */ = {
 			isa = PBXGroup;
 			children = (
+				FBF735CD2CEF866600937EBD /* Assets.xcassets */,
 				FBF735D52CEF867700937EBD /* SwiftSamples.entitlements */,
 				FBF735CF2CEF866600937EBD /* SwiftSamplesApp.swift */,
 				FBF735F52CEF8B7200937EBD /* FriendsListApp */,
-				FBF735CD2CEF866600937EBD /* Assets.xcassets */,
+				FB6132F82CF01C730049CEA2 /* ToDoListApp */,
 				FBF735CC2CEF866600937EBD /* Preview Content */,
 			);
 			path = SwiftSamples;
@@ -80,6 +180,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FB6132DF2CF01AA40049CEA2 /* WidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB6132F52CF01AA50049CEA2 /* Build configuration list for PBXNativeTarget "WidgetsExtension" */;
+			buildPhases = (
+				FB6132DC2CF01AA40049CEA2 /* Sources */,
+				FB6132DD2CF01AA40049CEA2 /* Frameworks */,
+				FB6132DE2CF01AA40049CEA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetsExtension;
+			packageProductDependencies = (
+			);
+			productName = WidgetsExtension;
+			productReference = FB6132E02CF01AA40049CEA2 /* WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		FBF735B92CEF865E00937EBD /* SwiftSamples */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FBF735C82CEF865F00937EBD /* Build configuration list for PBXNativeTarget "SwiftSamples" */;
@@ -87,10 +206,12 @@
 				FBF735B62CEF865E00937EBD /* Sources */,
 				FBF735B72CEF865E00937EBD /* Frameworks */,
 				FBF735B82CEF865E00937EBD /* Resources */,
+				FB6132F12CF01AA50049CEA2 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FB6132EF2CF01AA50049CEA2 /* PBXTargetDependency */,
 			);
 			name = SwiftSamples;
 			packageProductDependencies = (
@@ -109,6 +230,9 @@
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
+					FB6132DF2CF01AA40049CEA2 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 					FBF735B92CEF865E00937EBD = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -129,11 +253,20 @@
 			projectRoot = "";
 			targets = (
 				FBF735B92CEF865E00937EBD /* SwiftSamples */,
+				FB6132DF2CF01AA40049CEA2 /* WidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FB6132DE2CF01AA40049CEA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB61330B2CF01F680049CEA2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FBF735B82CEF865E00937EBD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,18 +279,96 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FB6132DC2CF01AA40049CEA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB6133092CF01F680049CEA2 /* ToDoList.swift in Sources */,
+				FB61330A2CF01F680049CEA2 /* WidgetsBundle.swift in Sources */,
+				FB6133002CF01ED20049CEA2 /* Todo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FBF735B62CEF865E00937EBD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FBF735D22CEF866600937EBD /* SwiftSamplesApp.swift in Sources */,
+				FB6132F72CF01B1C0049CEA2 /* Todo.swift in Sources */,
+				FB6132FC2CF01DE80049CEA2 /* TodoRowView.swift in Sources */,
+				FB6132FA2CF01CB70049CEA2 /* Home.swift in Sources */,
 				FBF735F42CEF8A8600937EBD /* FriendsListView.swift in Sources */,
+				FB6132FE2CF01E210049CEA2 /* CompletedTodoList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FB6132EF2CF01AA50049CEA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB6132DF2CF01AA40049CEA2 /* WidgetsExtension */;
+			targetProxy = FB6132EE2CF01AA50049CEA2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		FB6132F22CF01AA50049CEA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BCN34L6L3Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = roijacob.SwiftSamples.Widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FB6132F32CF01AA50049CEA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BCN34L6L3Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = roijacob.SwiftSamples.Widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		FBF735C62CEF865F00937EBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -340,6 +551,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FB6132F52CF01AA50049CEA2 /* Build configuration list for PBXNativeTarget "WidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB6132F22CF01AA50049CEA2 /* Debug */,
+				FB6132F32CF01AA50049CEA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FBF735B52CEF865E00937EBD /* Build configuration list for PBXProject "SwiftSamples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
