@@ -1,10 +1,23 @@
-# How to Implement In-App Purchases Using StoreKit API
+# How to Add a Listener for StoreKit Transactions
 
 ![StoreKit Logo](https://developer.apple.com/news/images/og/storekit-og.jpg)
 
-Use the code `HIIAPUSA` to navigate within the source code.
+Listeners in StoreKit are very important; it allows you to create a transaction on an Apple device, such as an iPhone, and access the same app such as an iPad that has all of the context about the transaction that you made on your iPhone. As such, this synchronizes the purchasing for you, so that no matter where you made the purchase, it would always be updated across Apple devices.
 
-The solution creates an [observable class](SwiftSamples/ContentView.swift#L20) where it stores all of the properties and methods related to the in-app products. This class is then exposed in the [View struct](SwiftSamples/ContentView.swift#L66) to display the products via [Text](SwiftSamples/ContentView.swift#L82) and provide the functionality for purchase using [`store.purchase`](SwiftSamples/ContentView.swift#L79).
+Use the acronym `HALST` to navigate within the source code.
 
-## Prerequisites:
+<br>
+
+**IMPLEMENTATION:** Add a [function](SwiftSamples/PurchaseLogic.swift#L47) that listens for the transactions, and [call](SwiftSamples/ContentView.swift#L82) that function once the view (that serves as the entry point) appears in your app.
+
+<br>
+
+## Prerequisite:
 - Make sure you have already set up StoreKit testing in Xcode. Refer to this [article](https://developer.apple.com/documentation/xcode/setting-up-storekit-testing-in-xcode) for more details.
+
+<br>
+
+## Additional Information
+- You can use an environment variable to initiate a StoreKit purchase. <sup>[1](https://developer.apple.com/documentation/storekit/purchaseaction)</sup>
+
+- `@AppStorage` only works in Views; you would receive a weird `Invalid Redeclaration` error if you put it in a class.

@@ -7,7 +7,6 @@
 
 import SwiftUI
 import StoreKit
-import Observation
 
 
 let credits = [
@@ -17,73 +16,71 @@ let credits = [
 ]
 
 
-@Observable
-class StoreProducts {
-    var products: [Product] = []
-    
-    init() {
-        // 1. HIIAPUSA: Retrieve the in-app products
-        Task(operation: {
-            do {
-                products = try await Product.products(for: credits)
-            } catch {
-                print("Error loading products: \(error)")
-                products = []
-            }
-        })
-    }
-    
-    // 3. HIIAPUSA: Purchase a product
-    func purchase(_ product: Product) async throws {
-        let result = try await product.purchase()
-        switch result {
-        case .success(let verification):
-            try await handleVerification(verification)
-        case .userCancelled, .pending:
-            print("You cancelled the transaction.")
-        default:
-            return
-        }
-    }
-    
-    // 4. HIIAPUSA: Verify the purchase
-    func handleVerification(_ verification: VerificationResult<StoreKit.Transaction>) async throws {
-        switch verification {
-        case .verified(let transaction):
-            
-            // 5. HIIAPUSA: Deliver the paid product/service
-            print("Transaction Done!")
-            
-            // 6. HIIAPUSA: Finish the transaction
-            await transaction.finish()
-        
-        case .unverified:
-            fatalError("Unverified Transaction!")
-        }
-    }
-}
-
-
 struct ContentView: View {
-    @State private var store = StoreProducts()
+    @Environment(\.purchase) private var purchase
+    
+    @State private var products: [Product] = []
+
+    @AppStorage("gold") var currentGold: Int = 0
+    @AppStorage("gem") var currentGem: Int = 0
+    @AppStorage("platinum") var currentPlatinum: Int = 0
     
     var sortedProducts: [Product] {
-        store.products.sorted(by: { $0.price < $1.price })
+        products.sorted(by: { $0.price < $1.price })
     }
     
-    // 2. HIIAPUSA: Display the in-app products
     var body: some View {
         VStack(content: {
-            ForEach(sortedProducts) { product in
-                Button(action: {
-                    Task {
-                        try? await store.purchase(product)
-                    }
-                }, label: {
-                    Text(product.displayName)
-                })
-            }
+            headerView
+            Spacer()
+            purchaseButtons
+            Spacer()
+            footerView
         })
+        .task(loadProducts)
+    }
+    
+    var headerView: some View {
+        HStack(content: {
+            Text("Gold: \(currentGold)")
+            Spacer()
+            Text("Gem: \(currentGem)")
+            Spacer()
+            Text("Platinum: \(currentPlatinum)")
+        })
+        .padding()
+    }
+    
+    var purchaseButtons: some View {
+        ForEach(sortedProducts, content: { product in
+            Button(action: {
+                Task(operation: {
+                    let purchaseResult = try await purchase(product)
+                    await handlePurchaseResult(purchaseResult)
+                })
+            }, label: {
+                Text(product.displayName)
+            })
+        })
+    }
+    
+    var footerView: some View {
+        Button(action: resetCurrencies, label: {
+            Text("Reset Currencies")
+        })
+    }
+    
+    @Sendable
+    private func loadProducts() async {
+        do {
+            products = try await Product.products(for: credits)
+        } catch {
+            print("Error loading products: \(error)")
+            products = []
+        }
+        
+        // 2. HALST: Listen for transactions every time ContentView appears on screen
+        _ = listenForTransactions
     }
 }
 

@@ -12,6 +12,7 @@
 		FB702AE92D0423A500643FB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB702AE12D0423A500643FB2 /* Preview Assets.xcassets */; };
 		FB702AEA2D0423A500643FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB702AE32D0423A500643FB2 /* Assets.xcassets */; };
 		FBCE88FD2D04241200D93D07 /* Currencies.storekit in Resources */ = {isa = PBXBuildFile; fileRef = FBCE88FC2D04241200D93D07 /* Currencies.storekit */; };
+		FBD5592A2D05362B0017FC9A /* PurchaseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD559292D05362B0017FC9A /* PurchaseLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		FB702AE52D0423A500643FB2 /* SwiftSamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSamplesApp.swift; sourceTree = "<group>"; };
 		FB7309032D04233F00FEF271 /* SwiftSamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCE88FC2D04241200D93D07 /* Currencies.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Currencies.storekit; sourceTree = "<group>"; };
+		FBD559292D05362B0017FC9A /* PurchaseLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 				FBCE88FC2D04241200D93D07 /* Currencies.storekit */,
 				FB702AE52D0423A500643FB2 /* SwiftSamplesApp.swift */,
 				FB702AE42D0423A500643FB2 /* ContentView.swift */,
+				FBD559292D05362B0017FC9A /* PurchaseLogic.swift */,
 				FB702AE22D0423A500643FB2 /* Preview Content */,
 			);
 			path = SwiftSamples;
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB702AE72D0423A500643FB2 /* ContentView.swift in Sources */,
+				FBD5592A2D05362B0017FC9A /* PurchaseLogic.swift in Sources */,
 				FB702AE82D0423A500643FB2 /* SwiftSamplesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
