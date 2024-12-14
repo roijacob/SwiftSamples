@@ -17,8 +17,6 @@ let credits = [
 
 
 struct ContentView: View {
-    @Environment(\.purchase) private var purchase
-    
     @State private var products: [Product] = []
 
     @AppStorage("gold") var currentGold: Int = 0
@@ -38,6 +36,18 @@ struct ContentView: View {
             footerView
         })
         .task(loadProducts)
+        .onInAppPurchaseCompletion { product, purchaseResult in
+            
+            // 1. HDPPSUO: Pattern match on the purchaseResult variable
+            if case .success(.success(.verified(let transaction))) = purchaseResult {
+                
+                // 2. HDPPSUO: Deliver the paid entitlement
+                deliverEntitlements(transaction)
+                
+                // 3. HDPPSUO: Mark the transaction as finished
+                await transaction.finish()
+            }
+        }
     }
     
     var headerView: some View {
@@ -53,14 +63,7 @@ struct ContentView: View {
     
     var purchaseButtons: some View {
         ForEach(sortedProducts, content: { product in
-            Button(action: {
-                Task(operation: {
-                    let purchaseResult = try await purchase(product)
-                    await handlePurchaseResult(purchaseResult)
-                })
-            }, label: {
-                Text(product.displayName)
-            })
+            ProductView(id: product.id, prefersPromotionalIcon: true)
         })
     }
     
@@ -79,7 +82,6 @@ struct ContentView: View {
             products = []
         }
         
-        // 2. HALST: Listen for transactions every time ContentView appears on screen
         _ = listenForTransactions
     }
 }

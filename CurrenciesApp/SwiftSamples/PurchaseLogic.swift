@@ -9,51 +9,25 @@ import StoreKit
 
 
 extension ContentView {
-    func handlePurchaseResult(_ purchaseResult: Product.PurchaseResult) async {
-        switch purchaseResult {
-        case .success(let verificationResult):
-            await handleVerification(verificationResult)
-        case .userCancelled, .pending:
-            print("Transaction Not Successful!")
+    func deliverEntitlements(_ transaction: Transaction) {
+        switch transaction.productID {
+        case "com.roijacob.currency.gold":
+            currentGold += 1
+        case "com.roijacob.currency.gem":
+            currentGem += 1
+        case "com.roijacob.currency.platinum":
+            currentPlatinum += 1
         default:
             break
         }
     }
     
-    func handleVerification(_ verificationResult: VerificationResult<StoreKit.Transaction>) async {
-        switch verificationResult {
-        case .verified(let transaction):
-            deliverEntitlements(transaction)
-            
-            print("Transaction Done!")
-            
-            await transaction.finish()
-            
-        case .unverified:
-            print("Unverified Transaction!")
-        }
-    }
-    
-    func deliverEntitlements(_ transaction: Transaction) {
-        if transaction.productID == "com.roijacob.currency.gold" {
-            currentGold += 1
-        } else if transaction.productID == "com.roijacob.currency.gem" {
-            currentGem += 1
-        } else if transaction.productID == "com.roijacob.currency.platinum" {
-            currentPlatinum += 1
-        }
-    }
-    
-    // 1. HALST: Iterate through any transactions that don't come from a direct call to `purchase()`.
     func listenForTransactions() -> Task<Void, Error> {
         return Task.detached {
             for await result in Transaction.updates {
-                switch result {
-                case .verified(let transaction):
+                if case .verified(let transaction) = result {
                     await deliverEntitlements(transaction)
                     await transaction.finish()
-                case .unverified:
-                    print("Transaction failed verification")
                 }
             }
         }
@@ -65,4 +39,3 @@ extension ContentView {
         currentPlatinum = 0
     }
 }
-
