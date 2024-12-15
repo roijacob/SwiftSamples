@@ -37,14 +37,8 @@ struct ContentView: View {
         })
         .task(loadProducts)
         .onInAppPurchaseCompletion { product, purchaseResult in
-            
-            // 1. HDPPSUO: Pattern match on the purchaseResult variable
             if case .success(.success(.verified(let transaction))) = purchaseResult {
-                
-                // 2. HDPPSUO: Deliver the paid entitlement
                 deliverEntitlements(transaction)
-                
-                // 3. HDPPSUO: Mark the transaction as finished
                 await transaction.finish()
             }
         }
@@ -63,13 +57,22 @@ struct ContentView: View {
     
     var purchaseButtons: some View {
         ForEach(sortedProducts, content: { product in
-            ProductView(id: product.id, prefersPromotionalIcon: true)
+            ProductView(id: product.id, icon: {
+                Image("\(product.displayName)")
+                    .resizable()
+            })
+            
+            // 4. HCCSPV: Call the custom ProductViewStyle in a StoreKit view
+            .productViewStyle(MiscritsProductStyle())
+            
+            .padding()
         })
     }
     
     var footerView: some View {
         Button(action: resetCurrencies, label: {
             Text("Reset Currencies")
+                .bold()
         })
     }
     
@@ -83,6 +86,48 @@ struct ContentView: View {
         }
         
         _ = listenForTransactions
+    }
+}
+
+// 1. HCCSPV: Create a custom struct that conforms to ProductViewStyle protocol
+struct MiscritsProductStyle: ProductViewStyle {
+    
+    // 2. HCCSPV: Define the configurations (product, state, or hasCurrentEntitlement)
+    func makeBody(configuration: Configuration) -> some View {
+        switch configuration.state {
+            
+        // 3. HCCSPV: Create the custom view in the success state
+        case .success(let product):
+            customProductView(product: product, configuration: configuration)
+        
+        case .loading, .unavailable, .failure:
+            Text("An error occurred")
+        @unknown default:
+            fatalError()
+        }
+    }
+    
+    @ViewBuilder
+    private func customProductView(product: Product, configuration: Configuration) -> some View {
+        HStack(spacing: 0) {
+            configuration.icon
+                .frame(width: 150, height: 150)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .padding()
+            
+            VStack(alignment: .center, spacing: 10) {
+                Text(product.displayName)
+                    .bold()
+                Button(product.displayPrice) {
+                    configuration.purchase()
+                }
+            }
+            .padding()
+        }
+        .background(
+            RoundedRectangle(cornerRadius: 25)
+                .stroke(Color.black, lineWidth: 3)
+        )
     }
 }
 

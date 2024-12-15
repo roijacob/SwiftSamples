@@ -1,24 +1,27 @@
-# How to Deliver Paid Products and Services Using `onInAppPurchaseCompletion`
+# How to Create Custom StoreKit Product Views
 
 ![StoreKit Logo](https://developer.apple.com/news/images/og/storekit-og.jpg)
 
-- `onInAppPurchaseCompletion` is the SwiftUI way to perform functionalities after a user makes a purchase in your app. 
-
-- For example, if a user purchases a paid item, you can create a function to deliver the paid item within the `onInAppPurchaseCompletion` block.
-
-- This is a significant improvement compared to manually writing your own payment handler and verification functions using the StoreKit API. See this [commit](https://github.com/roijacob/SwiftSamples/tree/ce99d9416046ce2357bad03e20a518f55a16f945) for more details.
+StoreKit has its own views compatible with SwiftUI, such as StoreView, ProductView, and SubscriptionStoreView, which were introduced at WWDC 2023. However, these views come with a default style that may or may not be appealing to developers. Fortunately, StoreKit views can be customized to suit your own preferences by using the `ProductViewStyle` protocol.
 
 ---
 
-Use the acronym `HDPPSUO` to navigate within the source code.
+Use the acronym `HCCSPV` to navigate within the source code.
 
 <br>
 
-**IMPLEMENTATION:** Get the [transaction data type](SwiftSamples/ContentView.swift#L41) for every purchase that occurs, then [deliver the paid product or service](SwiftSamples/ContentView.swift#L44) to the users. After that, make sure to always [finish the transaction](SwiftSamples/ContentView.swift#L47).
+> [!NOTE]
+> **IMPLEMENTATION:**
+> 1. [CODE](SwiftSamples/ContentView.swift#L92): Create a custom `ProductViewStyle` struct.
+> 2. [CODE](SwiftSamples/ContentView.swift#L95): Define the behavior within the `makeBody` function.
+> 3. [CODE](SwiftSamples/ContentView.swift#L99): Implement a `configuration.state` property to specify the custom view for each state.
+> 4. [CODE](SwiftSamples/ContentView.swift#L65): Call the custom struct in a StoreKit view.
 
 <br>
 
 ## Prerequisite:
 - Make sure you have already set up StoreKit testing in Xcode. Refer to this [article](https://developer.apple.com/documentation/xcode/setting-up-storekit-testing-in-xcode) for more details.
 
-- Make sure you are using a [StoreKit View](https://developer.apple.com/documentation/storekit/storekit-views) for the `onInAppPurchaseCompletion` to work, such as **StoreView**, **ProductView**, or **SubscriptionStoreView**.
+- Make sure you are using a [StoreKit View](https://developer.apple.com/documentation/storekit/storekit-views) such as **StoreView**, **ProductView**, or **SubscriptionStoreView**.
+
+- Use a custom icon. You can upload the image in the StoreKit configuration file and utilize it by setting `prefersPromotionalIcon = true`. However, it will not generate the complete image in a View. Instead, store the image in the Assets folder and use that as the custom icon. This is also the approach taken in Backyard Birds at WWDC 2023.

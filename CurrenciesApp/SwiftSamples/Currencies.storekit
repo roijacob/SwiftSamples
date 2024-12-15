@@ -26,7 +26,6 @@
         }
       ],
       "productID" : "com.roijacob.currency.gold",
-      "promotionalImageID" : "A73F975B",
       "referenceName" : "Gold",
       "type" : "Consumable"
     },
@@ -42,7 +41,6 @@
         }
       ],
       "productID" : "com.roijacob.currency.gem",
-      "promotionalImageID" : "F2CE18E9",
       "referenceName" : "Gem",
       "type" : "Consumable"
     },
@@ -58,13 +56,14 @@
         }
       ],
       "productID" : "com.roijacob.currency.platinum",
-      "promotionalImageID" : "3C05996C",
       "referenceName" : "Platinum",
       "type" : "Consumable"
     }
   ],
   "settings" : {
     "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
     "_storeKitErrors" : [
       {
         "current" : null,
