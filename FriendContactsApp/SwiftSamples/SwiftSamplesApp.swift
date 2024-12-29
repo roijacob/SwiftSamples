@@ -12,7 +12,6 @@ struct SwiftSamplesApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                // 2. HUSD: Setup the storage for the SwiftData model
                 .modelContainer(for: [Friend.self])
         }
     }
