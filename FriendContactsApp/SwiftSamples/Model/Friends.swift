@@ -23,6 +23,24 @@ class Friend {
     }
 }
 
+// 1. HIAS: Create a custom class
+@MainActor
+final class SharedDatabase {
+    let container: ModelContainer
+    let context: ModelContext
+    
+    init(useInMemoryStore: Bool = false) throws {
+        let configuration = ModelConfiguration(isStoredInMemoryOnly: useInMemoryStore)
+        
+        container = try ModelContainer(
+            for: Friend.self,
+            configurations: configuration
+        )
+        
+        context = ModelContext(container)
+    }
+}
+
 struct SampleData: PreviewModifier {
     typealias Context = ModelContainer
     

@@ -19,7 +19,6 @@ struct HomeView: View {
     
     var body: some View {
         VStack(content: {
-            // 1. EG&C: Set the relative frame for the upper view
             friendsCardView
                 .containerRelativeFrame(.vertical, { dimension, _  in
                     dimension * 0.35
@@ -54,7 +53,6 @@ struct HomeView: View {
         .tabViewStyle(.page(indexDisplayMode: .always))
     }
     
-    // 2. EG&C: Encapsulate the ZStack in GeometryReader
     private func friendCardEntry(for friend: Friend, in geometry: GeometryProxy) -> some View {
         ZStack(content: {
             RoundedRectangle(cornerRadius: 20)
@@ -81,7 +79,6 @@ struct HomeView: View {
     }
 }
 
-// 3. EG&C: Place the buttons in relative positions
 struct CircularButtonModifier: ViewModifier {
     let geometry: GeometryProxy
     let heightMultiplier: Double
@@ -106,4 +103,8 @@ extension View {
             )
         )
     }
+}
+
+#Preview(traits: .modifier(SampleData())) {
+    ContentView()
 }

@@ -1,60 +1,111 @@
-# Exploring GeometryReader and containerRelativeFrame
+# How to Integreate AppIntents with SwiftData
 
-![SwiftUI Logo](https://developer.apple.com/news/images/og/swiftui-og.png)
+![AppIntents Logo](https://docs-assets.developer.apple.com/published/ac15ae4c94b2461ac2f70b184512193d/app-intents-hero@2x.png)
 
 > [!TIP]
-> Use the acronym **`EG&C`** to navigate within the source code.
+> Use the acronym **`HIAS`** to navigate within the source code.
 
-`GeometryReader` and `containerRelativeFrame` are among the advanced ways to create a layout in SwiftUI. I think these are now the prerequisites for creating complex layouts in an Apple application.
-
-This is rather a basic guide to implementing these two methods. For more information about these, here are the references I studied, all from Stewart Lynch:
-
--  [SwiftUI GeometryReader](https://www.youtube.com/watch?v=AXGrYI78hIo)
--  [Laying out views with ContainerRelativeFrame in SwiftUI](https://www.youtube.com/watch?v=DudvesMYAAY)
-
-Now, it can be tempting to adjust the playback speed because he talks so slow, but for me, I adjusted it to 1.3x, and I think it's a sweet spot for speed and comprehension.
-
-**BONUS**: This is the [video](https://www.youtube.com/watch?v=zzqKhitBQfM) that I used to create the swipable cards.
+## Prerequisites:
+- Make sure you already know how to create a SwiftData application or at least the principles to integrate one into your app. You can refer to this [commit](https://github.com/roijacob/SwiftSamples/tree/56a59008a1fb8b925b4e02d9859e58e226189d39/FriendContactsApp) or read this [article](https://developer.apple.com/documentation/swiftdata/preserving-your-apps-model-data-across-launches) to have a quick catch-up.
 
 <br>
-
-## How I Used Both Together
-
-This is just an experiment on how I can customize layouts, and the end result is exactly what I had imagined in my mind. Mission accomplished.
-
-1. **Create the VStack**: As the primary device of the app is a phone, I created a stack so that the views would be lined up vertically.
-
-2. **Create the Upper View with Relative Frame**: The upper view is a `TabView` that presents the entries as cards. The use of `containerRelativeFrame` allows this view to be fixed. There is a `Rectangle()` below. You can add as many as you want there, but the upper view is fixed; the additional items are the ones adjusting.
-
-3. **Create the Card**: The card is a `ZStack` that creates a rounded rectangle and places the name in front of it.
-
-4. **Place the Buttons**: The placement of buttons uses relative dimensions. To achieve this, encapsulate the ZStack in a `GeometryReader`. Then use the dimensions of the `GeometryReader` to place the buttons within the card.
-
 <br>
 
-## My Experience In contentRelativeFrame
+AppIntents provide a way to expose app functionalities within the Apple ecosystem. However, most of the tutorials for AppIntents do not even focus on SwiftData, which is the modern way to manage persistent storage across Apple devices. This is a guide on how to implement both on a simple application:
 
-`contentRelativeFrame` is like the softcore version of `GeometryReader`; it gets layout information from the nearest container so that you can have a relative sizing to your view's size. But it has its own criteria on what constitutes a "container".
+---
+
+1. **Create a Class as a Source of Truth**: We need to create a class to establish the SwiftData object that we would expose in AppIntents. This is an example class that could even stand on its own as a snippet.
+
+```swift
+@MainActor
+final class SharedDatabase {
+    let container: ModelContainer
+    let context: ModelContext
+    
+    init(useInMemoryStore: Bool = false) throws {
+        // Define configurations
+        let configuration = ModelConfiguration(isStoredInMemoryOnly: useInMemoryStore)
+        
+        // Create a configured model container
+        container = try ModelContainer(
+            for: Friend.self,
+            configurations: configuration
+        )
+        
+        // Contextualize model container
+        context = ModelContext(container)
+    }
+}
+```
+
+I have tried using the ModelContainer as it is already a class by implementation, but I find that the data is not in sync when performing CRUD operations in the Shortcuts app and in the app itself.
 
 <br>
+<br>
 
-## My Experience In GeometryReader
+2. **Set up App Dependencies**: Setting up the app dependencies should be implemented in the App protocol, like this, for example:
 
-Here are some of the things I noticed in using the `GeometryReader`, you can also find this in the videos I provided: 
+```swift
+@main
+struct SwiftSamplesApp: App {
+    let database: SharedDatabase
+    
+    init() {
+        // Initialize the database
+        do {
+            database = try SharedDatabase()
+        } catch {
+            fatalError("Failed to initialize ModelContainer: \(error.localizedDescription)")
+        }
+        
+        // Use separate variable to avoid capturing 'self'
+        let sharedDB = database
+        AppDependencyManager.shared.add(dependency: sharedDB)
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .modelContainer(for: [Friend.self])
+        }
+    }
+}
+```
 
-`GeometryReader` acts like a container similar to VStack, HStack, and especially ZStack, but it places its child in the upper left.
+In the code, we are setting the database to use the custom class we have already created. Then, we use a local variable to store the reference, and we use it as a dependency.
 
-It is **greedy** meaning that if you create one, it will occupy all of the available space that was given to it. This is the opposite of most views in SwiftUI, like Text and VStack, where they only occupy what is needed based on their contents.
+> [!WARNING]
+> **You need to set up AppIntents in the App protocol.** You can essentially bypass this, and it is definitely possible to create an AppIntent without setting up the App protocol. But it is important to think that `AppDependencyManager` was not created for nothing. All of the sample apps in AppIntents use the `AppDependencyManager` for initialization, and for the sake of safety, it is much better to create AppIntents in this way, following the Apple engineers.
 
-The `GeometryReader` does not adjust its dimensions based on the child. If you have a child and reduced its height for example by 0.75, the 0.25 remaning would occupy blank space. Refer to the example below:
+<br>
+<br>
 
-<p align="center">
-  <img src="../images/geometryReader.png" width="50%"/>
-</p>
+3. **Create App Intents**: After setting up the previous steps, you are on your way to create your own App Intents, like this, for example:
 
-You can easily see the `GeometryReader` with the yellow background. The card as the child was reduced by 0.75, and the 0.25 occupies an empty space.
+```swift
+struct AddFriendIntent: AppIntent {
+    static var title: LocalizedStringResource = "Add Friend Entry"
+    
+    static var description: IntentDescription = IntentDescription("Add a new friend to your contacts")
 
-Ideally, the red background must adjust to fill the empty space due to the resizing, but that is not possible with `GeometryReader`.
+    @Parameter(title: "Name")
+    var enteredName: String
+    
+    @Parameter(title: "Phone Number")
+    var enteredNumber: String
+    
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        let newFriend = Friend(name: enteredName, number: enteredNumber)
+        swiftDatabase.context.insert(newFriend)
+        try swiftDatabase.context.save()
+        return .result()
+    }
 
-> [!NOTE]
-> What you can infer from this is that the `GeometryReader` that you create in layouts must act as the parent. To effectively create the layout for the children, it must be all encompassed inside the `GeometryReader`.
+    @Dependency
+    private var swiftDatabase: SharedDatabase
+}
+```
+
+Make sure that you use the `@Dependency` macro that points to the custom SwiftData class.
