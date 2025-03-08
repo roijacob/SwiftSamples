@@ -17,4 +17,36 @@ class Friend {
         self.name = name
         self.number = number
     }
+    
+    func getFirstName() -> String {
+        name.split(separator: " ").first.map(String.init) ?? name
+    }
+}
+
+struct SampleData: PreviewModifier {
+    typealias Context = ModelContainer
+    
+    static func makeSharedContext() async throws -> Context {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: Friend.self, configurations: config)
+        let context = container.mainContext
+        
+        let currentFriends = [
+            Friend(name: "Michael Bascon", number: "0917-524-0000"),
+            Friend(name: "Steven Medenilla", number: "0968-439-0000")
+        ]
+        
+        for friend in currentFriends {
+            context.insert(friend)
+        }
+        
+        try context.save()
+        
+        return container
+    }
+    
+    func body(content: Content, context: Context) -> some View {
+        content
+            .modelContainer(context)
+    }
 }
