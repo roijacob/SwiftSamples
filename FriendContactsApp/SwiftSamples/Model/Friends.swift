@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-// 1. HUSD: Create a class with @Model macro
 @Model
 class Friend {
     var name: String
